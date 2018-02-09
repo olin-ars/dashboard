@@ -14,7 +14,7 @@ export default class BoatOverview extends React.Component {
 
     componentDidMount = () => {
         // Open WebSocket connection to server
-        const wss = SocketIOClient.connect('ws://localhost:1234');
+        const wss = SocketIOClient.connect('ws://localhost:1234/observing');
         // let broadcasting = wss.io('/broadcasting');
         wss.on('update', this.receivedHeadingUpdate);
     };

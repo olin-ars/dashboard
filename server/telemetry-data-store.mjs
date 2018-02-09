@@ -23,11 +23,10 @@ export default class TelemetryDataStore {
         // Convert the timestamp string into a moment object
         let timestamp = moment(msg.timestamp);
 
-        let dataBundle = new DataBundle(timestamp, msg.msgType, msg.dataValue);
-        console.log('Adding data to store:');
+        let dataBundle = new DataBundle(timestamp, msg.dataType, msg.dataValue);
         console.log(util.inspect(dataBundle));
         this.addDataToStore(dataBundle);
-
+        console.log('Data store size: ' + this.dataQueues[msg.dataType].size);
     }
 
 }
@@ -61,6 +60,7 @@ class DataQueue {
         } else { // Adding an item to a list with at least one item already in it
             this.tail.prev = newNode;
             this.tail = newNode;
+            ++this.size;
 
             // Check if we need to drop an item
             while (this.size > this.maxSize) {
@@ -77,6 +77,7 @@ class DataQueue {
         let item = this.head.value;
         this.head = this.head.prev;
         this.head.next = null;
+        --this.size;
         return item;
     }
 

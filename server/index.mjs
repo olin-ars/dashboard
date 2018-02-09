@@ -22,6 +22,6 @@ dbConn.connect();
 const httpServer = new HttpServer(port);
 
 // Initialize a telemetry data store and start the WebSockets server
-const telemetryDataStore = new TelemetryDataStore();
+const telemetryDataStore = new TelemetryDataStore(30);
 const wsServer = new WebSocketServer(telemetryDataStore.processReceivedData);
 wsServer.start(httpServer.getHTTPServer());
