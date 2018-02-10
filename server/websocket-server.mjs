@@ -9,15 +9,6 @@ export default class WebSocketServer {
         this.onObserverConnection = this.onObserverConnection.bind(this);
         this.onReporterConnection = this.onReporterConnection.bind(this);
         let heading = 20;
-        // setInterval(() => {
-        //     if (this.observingNs) {
-        //         console.log('Emitting update...');
-        //         this.observingNs.emit('update', {heading: heading});
-        //         if (++heading > 360) {
-        //             heading = 1;
-        //         }
-        //     }
-        // }, 250);
     }
 
     start(httpServer) {
@@ -32,7 +23,7 @@ export default class WebSocketServer {
 
     onReporterConnection(socket) {
         console.log('Reporter connected');
-        socket.on('report', (data) => this.onTelemetryPush(socket, data));
+        socket.on('report', (data) => this.onReportMsgReceive(socket, data));
         socket.on('disconnect', () => this.onDisconnect(socket));
 
     }
@@ -48,16 +39,14 @@ export default class WebSocketServer {
         console.log('Client disconnected');
     }
 
-    onRegisterListenerRequest(socket, data) {
-        this.connectedListeners.indexOf()
-    }
-
-    onTelemetryPush(socket, data) {
+    onReportMsgReceive(socket, msg) {
         if (this.telemetryDataHandler) {
-            this.telemetryDataHandler(data);
+            this.telemetryDataHandler(msg);
         }
-        // Push the data to the observers
-        this.observingNs.emit('update', {[data.dataType]: data.dataValue});
+        // Push the msg to any observers
+        if (this.observingNs) {
+            this.observingNs.emit('update', msg);
+        }
     }
 
     broadcastDevices(msg) {

@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 // import './index.css';
 // import registerServiceWorker from './registerServiceWorker';
+import styles from './css/styles.css';
 import BoatOverview from './boat-overview';
 
 class App extends React.Component {

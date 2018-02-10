@@ -1,0 +1,70 @@
+* {
+    transition: all 0.5s ease;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    font-size: 1.1em;
+}
+
+span.SVGInline {
+    overflow: auto;
+    display: inline-block;
+}
+
+svg {
+    width: auto;
+    height: auto;
+}
+
+.boat-visualizer {
+    display: flex;
+    border: 1px solid #ddd;
+}
+
+.visualization {
+    padding: 1em;
+}
+
+span.SVGInline.boat {
+    overflow: hidden;
+}
+
+.boat svg {
+    height: 10em;
+    width: 10em;
+    padding: 1em;
+}
+
+.compass-rose svg {
+    height: 5em;
+    /*! width: auto; */
+}
+
+.stat-summary {
+    border-left: 1px solid #ddd;
+    background-color: #eee;
+}
+
+.stat-summary .stat {
+    display: flex;
+    flex-direction: column;
+    padding: 0.5em 0.5em 0;
+}
+
+.stat-summary .stat > *:not(:first-child) {
+    text-align: center;
+}
+
+.stat .title {
+    color: #666;
+}
+
+.stat :not(.title) {
+    font-size: 1.3em;
+    margin: 0.3em 0;
+}
+
+.stat:not(:last-child) {
+    border-bottom: 1px solid #ccc;
+}

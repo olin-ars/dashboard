@@ -4,7 +4,6 @@ import fs from 'fs';
 import HttpServer from './http-server.mjs';
 import TelemetryDataStore from './telemetry-data-store.mjs';
 import WebSocketServer from './websocket-server.mjs';
-import SocketIO from 'socket.io';
 
 // Try loading environment variables from a .env file
 if (fs.existsSync('./.env')) {

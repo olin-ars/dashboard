@@ -12,21 +12,21 @@ export default class TelemetryDataStore {
 
     addDataToStore(bundle) {
         // Check if this is the first time we've tried to add a bundle of this type
-        if (!this.dataQueues.hasOwnProperty(bundle.dataType)) {
-            this.dataQueues[bundle.dataType] = new DataQueue(this.bufferSize);
+        if (!this.dataQueues.hasOwnProperty(bundle.type)) {
+            this.dataQueues[bundle.type] = new DataQueue(this.bufferSize);
         }
         // Enqueue the bundle
-        this.dataQueues[bundle.dataType].enqueue(bundle);
+        this.dataQueues[bundle.type].enqueue(bundle);
     }
 
     processReceivedData(msg) {
         // Convert the timestamp string into a moment object
         let timestamp = moment(msg.timestamp);
 
-        let dataBundle = new DataBundle(timestamp, msg.dataType, msg.dataValue);
+        let dataBundle = new DataBundle(timestamp, msg.type, msg.data);
         console.log(util.inspect(dataBundle));
         this.addDataToStore(dataBundle);
-        console.log('Data store size: ' + this.dataQueues[msg.dataType].size);
+        console.log('Data store size: ' + this.dataQueues[msg.type].size);
     }
 
 }
@@ -34,8 +34,8 @@ export default class TelemetryDataStore {
 export class DataBundle {
     constructor(timestamp, dataType, dataValue) {
         this.timestamp = timestamp;
-        this.dataType = dataType;
-        this.dataValue = dataValue;
+        this.type = dataType;
+        this.value = dataValue;
     }
 }
 
