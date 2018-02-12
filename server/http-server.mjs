@@ -3,6 +3,8 @@
 import expose from './expose';
 import express from 'express';
 import http from 'http';
+import fs from 'fs';
+import indexHTML from '../index.html.mjs';
 
 export default class HttpServer {
     
@@ -42,7 +44,10 @@ export default class HttpServer {
 
         // Register the routes
         this.app.get('/', (req, res) => {
-            res.sendFile(rootDir + '/webapp/public/index.html')
+            res.send(indexHTML);
+        });
+        this.app.get('/bundle.js', (req, res) => {
+            res.sendFile(rootDir + '/bundle.js')
         });
     }
     

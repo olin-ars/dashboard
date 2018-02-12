@@ -2,14 +2,14 @@ var webpack = require('webpack');
 var path = require('path');
 
 var BUILD_DIR = path.resolve(__dirname);
-var APP_DIR = path.resolve(__dirname, 'src');
+var APP_DIR = path.resolve(__dirname, 'webapp');
 
 module.exports = {
     devtool:'source-map',
     entry: APP_DIR + '/index.jsx',
     output: {
         path: BUILD_DIR,
-        publicPath: '/public/build/',
+        publicPath: "/",
         filename: 'bundle.js'
     },
     module : {

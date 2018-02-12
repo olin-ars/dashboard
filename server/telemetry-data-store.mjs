@@ -24,9 +24,13 @@ export default class TelemetryDataStore {
         let timestamp = moment(msg.timestamp);
 
         let dataBundle = new DataBundle(timestamp, msg.type, msg.data);
-        console.log(util.inspect(dataBundle));
+        if (process.env.DEBUG) {
+            console.log(util.inspect(dataBundle));
+        }
         this.addDataToStore(dataBundle);
-        console.log('Data store size: ' + this.dataQueues[msg.type].size);
+        if (process.env.DEBUG) {
+            console.log('Data store size: ' + this.dataQueues[msg.type].size);
+        }
     }
 
 }
