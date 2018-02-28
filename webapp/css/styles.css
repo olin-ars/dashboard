@@ -3,8 +3,36 @@
     font-family: Arial, sans-serif;
 }
 
+html,
+body,
+#root,
+.app {
+    height: 100%;
+    width: 100%;
+}
+
 body {
     font-size: 1.1em;
+    margin: 0;
+}
+
+.app {
+    display: flex;
+    width: 100%;
+    height: 100%;
+}
+
+.app-sidebar {
+    display: flex;
+    flex-direction: column;
+    background-color: #009BDF;
+    max-width: 20em;
+    height: 100%;
+    border-right: 3px solid #ddd;
+}
+
+.app-sidebar header {
+    margin: 3em;
 }
 
 span.SVGInline {

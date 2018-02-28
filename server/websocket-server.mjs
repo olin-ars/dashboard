@@ -30,7 +30,7 @@ export default class WebSocketServer {
 
     onObserverConnection(socket) {
         console.log('Observer connected');
-        socket.on('Hello', (data) => console.log(data));
+        socket.on('set:control/heading/kp', (data) => console.log(data));
         socket.on('disconnect', () => this.onDisconnect(socket));
 
     }
