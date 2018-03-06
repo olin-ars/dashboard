@@ -1,6 +1,7 @@
 // This file contains a bunch of Redux reducers
 
 import { ActionTypes } from './actions';
+import { MESSAGE_TYPES } from "./websockets";
 import SidebarModes from '../data/sidebar-modes';
 
 export function general(state = {}, action) {
@@ -27,6 +28,21 @@ export function general(state = {}, action) {
         default:
             return state;
     }
+}
+
+export function boat(state = {}, action) {
+  let newState = Object.assign({}, state);
+  switch (action.type) {
+    case MESSAGE_TYPES.POSITION:
+      newState.longitude = action.data.x;
+      newState.latitude = action.data.y;
+      return newState;
+    case MESSAGE_TYPES.HEADING:
+      newState.heading = action.data;
+      return newState;
+    default:
+      return state;
+  }
 }
 
 export function control(state = {}, action) {

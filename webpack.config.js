@@ -1,8 +1,8 @@
-var webpack = require('webpack');
-var path = require('path');
+const webpack = require('webpack');
+const path = require('path');
 
-var BUILD_DIR = path.resolve(__dirname);
-var APP_DIR = path.resolve(__dirname, 'webapp');
+const BUILD_DIR = path.resolve(__dirname);
+const APP_DIR = path.resolve(__dirname, 'webapp');
 
 module.exports = {
     devtool:'source-map',

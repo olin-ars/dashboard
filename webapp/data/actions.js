@@ -4,7 +4,10 @@
 // import fetch from 'isomorphic-fetch';
 // import moment from "moment";
 // import ReactGA from 'react-ga';
-import { MESSAGE_TYPES as WS_MESSAGE_TYPES } from "./websockets";
+import {
+  MESSAGE_TYPES as WS_MESSAGE_TYPES,
+  emit,
+} from "./websockets";
 
 export const ActionTypes = {
   // General UI
@@ -113,8 +116,10 @@ export function setRoute(route) {
 // ########## Begin Control Parameter Tweaking ############ //
 
 export function setHeadingControllerKi(ki) {
-  // TODO Send message to server
-  return { type: ActionTypes.SET_HEADING_CONTROLLER_KI, data: ki };
+  return (dispatch, getStore, {emit}) => {
+    emit(WS_MESSAGE_TYPES.SET_HEADING_CONTROL_KI, ki);
+    dispatch({ type: ActionTypes.SET_HEADING_CONTROLLER_KI, data: ki });
+  }
 }
 
 export function setHeadingControllerKp(kp) {

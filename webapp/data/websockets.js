@@ -1,9 +1,9 @@
 // This file helps integrate the WebSockets connection to the server with the Redux data store.
-// It is based off: https://medium.com/@ianovenden/redux-websocket-integration-c1a0d22d3189
+// It is based off https://medium.com/@ianovenden/redux-websocket-integration-c1a0d22d3189
 
 import io from 'socket.io-client';
 
-const socket = io(window.SERVER_URI);
+const socket = io.connect(window.SERVER_URI);
 
 export const MESSAGE_TYPES = {
   HEADING: 'heading',
@@ -16,8 +16,8 @@ export const MESSAGE_TYPES = {
 
 export const init = ( store ) => {
 
-  Object.keys(MESSAGE_TYPES).forEach(msgType => socket.on( msgType, (payload ) =>
-        store.dispatch({ type: msgType, payload })
+  Object.keys(MESSAGE_TYPES).forEach(msgType => socket.on(MESSAGE_TYPES[msgType], (payload) =>
+        store.dispatch({ type: MESSAGE_TYPES[msgType], data: payload.data })
       )
     );
 };

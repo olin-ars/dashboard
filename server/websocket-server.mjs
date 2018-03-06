@@ -8,6 +8,7 @@ export default class WebSocketServer {
         this.telemetryDataHandler = telemetryDataHandler;
         this.onObserverConnection = this.onObserverConnection.bind(this);
         this.onReporterConnection = this.onReporterConnection.bind(this);
+        this.onSetHeadingControlConstant = this.onSetHeadingControlConstant.bind(this);
         let heading = 20;
     }
 
@@ -25,12 +26,12 @@ export default class WebSocketServer {
         console.log('Reporter connected');
         socket.on('report', (data) => this.onReportMsgReceive(socket, data));
         socket.on('disconnect', () => this.onDisconnect(socket));
-
     }
 
     onObserverConnection(socket) {
         console.log('Observer connected');
-        socket.on('set:control/heading/kp', (data) => console.log(data));
+        socket.on('set:control/heading/kp', (data) => this.onSetHeadingControlConstant('set:control/heading/kp', data));
+        socket.on('set:control/heading/ki', (data) => this.onSetHeadingControlConstant('set:control/heading/ki', data));
         socket.on('disconnect', () => this.onDisconnect(socket));
 
     }
@@ -45,16 +46,19 @@ export default class WebSocketServer {
         }
         // Push the msg to any observers
         if (this.observingNs) {
-            this.observingNs.emit('update', msg);
+            const type = msg.type;
+            delete msg.type;
+            if (process.env.VERBOSE) {
+              console.log(`Reporting to ${type}:`);
+              console.log(msg);
+            }
+            this.observingNs.emit(type, msg);
         }
     }
 
-    broadcastDevices(msg) {
-        const connectedDevices = Object.values(io.sockets.connected);
-        if (connectedDevices.length > 0) {
-            connectedDevices.forEach((ws) => {
-                ws.emit('devices', msg);
-            });
-        }
-    };
+    onSetHeadingControlConstant(kpOrKi, value) {
+      console.log(value);
+      this.reportingNs.emit(kpOrKi, value);
+    }
+
 }

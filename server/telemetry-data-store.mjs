@@ -25,7 +25,7 @@ export default class TelemetryDataStore {
 
         let dataBundle = new DataBundle(timestamp, msg.type, msg.data);
         if (process.env.DEBUG) {
-            console.log(util.inspect(dataBundle));
+            // console.log(util.inspect(dataBundle));
         }
         this.addDataToStore(dataBundle);
         if (process.env.DEBUG) {
