@@ -32,6 +32,7 @@ export default class WebSocketServer {
         console.log('Observer connected');
         socket.on('set:control/heading/kp', (data) => this.onSetHeadingControlConstant('set:control/heading/kp', data));
         socket.on('set:control/heading/ki', (data) => this.onSetHeadingControlConstant('set:control/heading/ki', data));
+        socket.on('set:control/target_heading', (data) => this.reportingNs.emit('set:control/target_heading', data));
         socket.on('disconnect', () => this.onDisconnect(socket));
 
     }

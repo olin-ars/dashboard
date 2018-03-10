@@ -6,7 +6,8 @@ import { connect } from 'react-redux';
 import StatusSidebar from '../status-sidebar/status-sidebar';
 import {
   setHeadingControllerKi,
-  setHeadingControllerKp
+  setHeadingControllerKp,
+  setTargetHeading,
 } from "../data/actions";
 
 const mapStateToProps = state => {
@@ -14,8 +15,7 @@ const mapStateToProps = state => {
     latitude: state.boat.latitude,
     longitude: state.boat.longitude,
     heading: state.boat.heading,
-    kp: state.control.heading.kp,
-    ki: state.control.heading.ki,
+    control: state.control,
     wind: state.environment.wind,
   }
 };
@@ -29,6 +29,9 @@ const mapDispatchToProps = dispatch => {
     pTermChanged: (e) => {
       dispatch(setHeadingControllerKp(e.target.value));
     },
+    setTargetHeading: (e) => {
+      dispatch(setTargetHeading(e.target.value));
+    }
   }
 };
 

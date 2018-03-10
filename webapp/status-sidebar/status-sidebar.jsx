@@ -14,7 +14,15 @@ export default class StatusSidebar extends React.Component {
         </StatusSidebarItemWrapper>
 
         <StatusSidebarItemWrapper title="Heading Control">
-          <HeadingController {...this.props} />
+          <HeadingController
+            kp={this.props.control.heading.kp}
+            ki={this.props.control.heading.ki}
+            error={this.props.control.heading.error}
+            desiredRudderPos={this.props.control.heading.desiredRudderPos}
+            targetHeading={this.props.control.heading.targetHeading}
+            targetHeadingChanged={this.props.setTargetHeading}
+            {...this.props}
+          />
         </StatusSidebarItemWrapper>
 
         <StatusSidebarItemWrapper title="Wind">

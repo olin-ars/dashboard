@@ -29,6 +29,9 @@ export default function () {
       heading: {
         ki: 0,
         kp: 0,
+        error: 0,
+        desiredRudderPos: 0,
+        targetHeading: 0,
       },
     },
     environment: {

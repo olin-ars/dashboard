@@ -55,6 +55,13 @@ export function control(state = {}, action) {
     case ActionTypes.SET_HEADING_CONTROLLER_KP:
       newState.heading.kp = action.data;
       return newState;
+    case ActionTypes.SET_HEADING_CONTROLLER_TARGET_HEADING:
+      newState.heading.targetHeading = action.data;
+      return newState;
+    case MESSAGE_TYPES.HEADING_CONTROL_ERROR_DESIRED_RUDDER_POS:
+      newState.heading.error = action.data.error;
+      newState.heading.desiredRudderPos = action.data.desiredRudderPos;
+      return newState;
     default:
       return state;
   }

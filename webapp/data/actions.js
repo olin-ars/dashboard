@@ -20,6 +20,7 @@ export const ActionTypes = {
   // Control parameters
   SET_HEADING_CONTROLLER_KI: 'SET_HEADING_CONTROLLER_KI',
   SET_HEADING_CONTROLLER_KP: 'SET_HEADING_CONTROLLER_KP',
+  SET_HEADING_CONTROLLER_TARGET_HEADING: 'SET_HEADING_CONTROLLER_TARGET_HEADING',
 };
 
 // Sections:
@@ -123,10 +124,16 @@ export function setHeadingControllerKi(ki) {
 }
 
 export function setHeadingControllerKp(kp) {
-  // TODO Send message to server
   return (dispatch, getStore, args) => {
     emit(WS_MESSAGE_TYPES.SET_HEADING_CONTROL_KP, kp);
     dispatch({ type: ActionTypes.SET_HEADING_CONTROLLER_KP, data: kp });
+  };
+}
+
+export function setTargetHeading(theta) {
+  return (dispatch, getStore, args) => {
+    emit(WS_MESSAGE_TYPES.SET_TARGET_HEADING, theta);
+    dispatch({ type: ActionTypes.SET_HEADING_CONTROLLER_TARGET_HEADING, data: theta });
   };
 }
 

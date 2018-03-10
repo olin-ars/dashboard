@@ -45,6 +45,11 @@ body {
     flex: 1;
 }
 
+.half-width {
+    width: 50%;
+    float: left;
+}
+
 .map-status-container {
     display: flex;
     flex-direction: row;

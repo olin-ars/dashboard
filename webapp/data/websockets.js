@@ -10,8 +10,10 @@ export const MESSAGE_TYPES = {
   POSITION: 'position',
   HEADING_CONTROL_KI: 'control/heading/ki',
   HEADING_CONTROL_KP: 'control/heading/kp',
+  HEADING_CONTROL_ERROR_DESIRED_RUDDER_POS: 'control/heading/error_desired_rudder_pos',
   SET_HEADING_CONTROL_KP: 'set:control/heading/kp',
   SET_HEADING_CONTROL_KI: 'set:control/heading/ki',
+  SET_TARGET_HEADING: 'set:control/target_heading'
 };
 
 export const init = ( store ) => {
