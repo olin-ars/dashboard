@@ -17,6 +17,7 @@ export default `
 <div id="root"></div>
 <script type="text/javascript">
     window.SERVER_URI = '${SERVER_URI}';
+    window.GOOGLE_MAPS_API_KEY = '${process.env.GOOGLE_MAPS_API_KEY}';
 </script>
 <script src="bundle.js" type="text/javascript"></script>
 </body>

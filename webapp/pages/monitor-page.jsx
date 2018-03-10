@@ -1,4 +1,5 @@
 import React from 'react';
+import MapContainer from '../containers/map-container';
 import StatusSidebarContainer from '../containers/status-sidebar-container';
 
 export default class MonitorPage extends React.Component {
@@ -7,8 +8,10 @@ export default class MonitorPage extends React.Component {
     return (
       <div className="page">
         <div className="map-status-container">
-          {/*Map goes here*/}
-          <StatusSidebarContainer/>
+          <div className="map">
+            <MapContainer />
+          </div>
+          <StatusSidebarContainer />
         </div>
         {/*Console goes here*/}
       </div>

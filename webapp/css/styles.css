@@ -27,7 +27,7 @@ body {
     background-color: #009BDF;
     max-width: 20em;
     height: 100%;
-    border-right: 3px solid #ddd;
+    /*border-right: 3px solid #ddd;*/
 }
 
 .app-sidebar header {
@@ -57,10 +57,16 @@ body {
     flex: 1;
 }
 
+.map {
+    position: relative;
+    flex-grow: 5;
+}
+
 .sidebar.status {
-    width: 35%;
+    max-width: 25em;
     background-color: #f8f8f8;
     border-left: 1px solid #dedede;
+    flex-grow: 1;
 }
 
 .status-sidebar-item-wrapper {
