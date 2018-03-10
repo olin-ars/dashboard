@@ -1,7 +1,7 @@
 import React from 'react';
 import SVGInline from 'react-svg-inline';
-import BoatAerialSVG from './svg/boat-aerial.svg';
-import CompassRoseSVG from './svg/compass-rose.svg';
+import BoatAerialSVG from '../svg/boat-aerial.svg';
+import CompassRoseSVG from '../svg/compass-rose.svg';
 import numeral from 'numeral';
 
 export default class BoatVisualizer extends React.Component {

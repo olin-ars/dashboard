@@ -59,3 +59,12 @@ export function control(state = {}, action) {
       return state;
   }
 }
+
+export function environment(state = {}, action) {
+  let newState = Object.assign({}, state);
+
+  switch (action.type) {
+    default:
+      return state;
+  }
+}

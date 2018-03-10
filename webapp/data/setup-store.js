@@ -31,6 +31,12 @@ export default function () {
         kp: 0,
       },
     },
+    environment: {
+      wind: {
+        speed: 0,
+        direction: 0,
+      },
+    },
   };
 
   const middleware = [

@@ -5,9 +5,9 @@ import { Provider } from 'react-redux'
 // import registerServiceWorker from './registerServiceWorker';
 import styles from './css/styles.css';
 import setupStore from './data/setup-store';
-import BoatOverviewContainer from './containers/boat-overview-container';
-import Sidebar from './sidebar/sidebar';
-import SidebarMode from './data/sidebar-modes';
+import BoatOverviewContainer from './containers/status-sidebar-container';
+import Sidebar from './nav-sidebar/sidebar';
+import MonitorPage from './pages/monitor-page';
 const store = setupStore();
 
 class App extends React.Component {
@@ -16,7 +16,7 @@ class App extends React.Component {
       <Provider store={store}>
         <div className="app">
           <Sidebar/>
-          <BoatOverviewContainer/>
+          <MonitorPage/>
         </div>
       </Provider>
     );

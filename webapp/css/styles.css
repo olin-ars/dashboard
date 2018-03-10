@@ -1,5 +1,4 @@
 * {
-    transition: all 0.5s ease;
     font-family: Arial, sans-serif;
 }
 
@@ -35,6 +34,65 @@ body {
     margin: 3em;
 }
 
+.sidebar {
+    display: flex;
+    flex-direction: column;
+}
+
+.page {
+    display: flex;
+    flex-direction: row;
+    flex: 1;
+}
+
+.map-status-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end; /* Temporary -- remove once map implemented */
+    flex: 1;
+}
+
+.sidebar.status {
+    width: 35%;
+    background-color: #f8f8f8;
+    border-left: 1px solid #dedede;
+}
+
+.status-sidebar-item-wrapper {
+    overflow: auto;
+    /*flex: 1;*/
+    display: flex;
+    flex-direction: column;
+}
+
+.status-sidebar-item-wrapper > .title {
+    padding: 1em;
+    display: block;
+    text-align: center;
+    background-color: #f0f0f0;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.stat-text {
+    padding: 0.5em;
+}
+
+.stat-text > span {
+    display: block;
+}
+
+.stat-text > .title {
+    color: gray;
+    margin-bottom: 0.3em;
+}
+
+.stat-text > .value {
+    font-size: 1.2em;
+}
+
 span.SVGInline {
     overflow: auto;
     display: inline-block;
@@ -47,7 +105,10 @@ svg {
 
 .boat-visualizer {
     display: flex;
-    border: 1px solid #ddd;
+}
+
+.boat-visualizer svg {
+    transition: transform 0.5s ease;
 }
 
 .visualization {
@@ -59,19 +120,14 @@ span.SVGInline.boat {
 }
 
 .boat svg {
-    height: 10em;
-    width: 10em;
+    height: 6em;
+    width: 6em;
     padding: 1em;
 }
 
 .compass-rose svg {
     height: 5em;
     /*! width: auto; */
-}
-
-.stat-summary {
-    border-left: 1px solid #ddd;
-    background-color: #eee;
 }
 
 .stat-summary .stat {
@@ -91,8 +147,4 @@ span.SVGInline.boat {
 .stat :not(.title) {
     font-size: 1.3em;
     margin: 0.3em 0;
-}
-
-.stat:not(:last-child) {
-    border-bottom: 1px solid #ccc;
 }
