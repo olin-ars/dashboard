@@ -1,7 +1,7 @@
 // This file contains a bunch of Redux reducers
 
 import { ActionTypes } from './actions';
-import { MESSAGE_TYPES } from "./websockets";
+import { ROS_TOPICS } from "./websockets";
 import SidebarModes from '../data/sidebar-modes';
 
 export function general(state = {}, action) {
@@ -33,11 +33,11 @@ export function general(state = {}, action) {
 export function boat(state = {}, action) {
   let newState = Object.assign({}, state);
   switch (action.type) {
-    case MESSAGE_TYPES.POSITION:
+    case ROS_TOPICS.POSITION:
       newState.longitude = action.data.x;
       newState.latitude = action.data.y;
       return newState;
-    case MESSAGE_TYPES.HEADING:
+    case ROS_TOPICS.HEADING:
       newState.heading = action.data;
       return newState;
     default:
@@ -58,7 +58,7 @@ export function control(state = {}, action) {
     case ActionTypes.SET_HEADING_CONTROLLER_TARGET_HEADING:
       newState.heading.targetHeading = action.data;
       return newState;
-    case MESSAGE_TYPES.HEADING_CONTROL_ERROR_DESIRED_RUDDER_POS:
+    case ROS_TOPICS.HEADING_CONTROL_ERROR_DESIRED_RUDDER_POS:
       newState.heading.error = action.data.error;
       newState.heading.desiredRudderPos = action.data.desiredRudderPos;
       return newState;

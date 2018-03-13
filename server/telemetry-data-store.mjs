@@ -10,13 +10,13 @@ export default class TelemetryDataStore {
         this.processReceivedData = this.processReceivedData.bind(this);
     }
 
-    addDataToStore(bundle) {
+    addDataToStore(topicName, bundle) {
         // Check if this is the first time we've tried to add a bundle of this type
-        if (!this.dataQueues.hasOwnProperty(bundle.type)) {
-            this.dataQueues[bundle.type] = new DataQueue(this.bufferSize);
+        if (!this.dataQueues.hasOwnProperty(topicName)) {
+            this.dataQueues[topicName] = new DataQueue(this.bufferSize);
         }
         // Enqueue the bundle
-        this.dataQueues[bundle.type].enqueue(bundle);
+        this.dataQueues[topicName].enqueue(bundle);
     }
 
     processReceivedData(msg) {
@@ -27,9 +27,9 @@ export default class TelemetryDataStore {
         if (process.env.DEBUG) {
             // console.log(util.inspect(dataBundle));
         }
-        this.addDataToStore(dataBundle);
+        this.addDataToStore(msg.topicName, dataBundle);
         if (process.env.DEBUG) {
-            console.log('Data store size: ' + this.dataQueues[msg.type].size);
+            console.log('Data store size: ' + this.dataQueues[msg.topicName].size);
         }
     }
 

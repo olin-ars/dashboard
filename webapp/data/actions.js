@@ -5,7 +5,9 @@
 // import moment from "moment";
 // import ReactGA from 'react-ga';
 import {
-  MESSAGE_TYPES as WS_MESSAGE_TYPES,
+  WS_EVENT_TYPES,
+  ROS_TOPICS,
+  ROS_MSG_TYPES,
   emit,
 } from "./websockets";
 
@@ -114,26 +116,41 @@ export function setRoute(route) {
 
 // ########## End Navigation Actions ########## //
 
+export function handleROSMessage(msg) {
+  return (dispatch, getStore, {emit}) => {
+
+  };
+}
+
 // ########## Begin Control Parameter Tweaking ############ //
 
 export function setHeadingControllerKi(ki) {
   return (dispatch, getStore, {emit}) => {
-    emit(WS_MESSAGE_TYPES.SET_HEADING_CONTROL_KI, ki);
+    emit(WS_EVENT_TYPES.PUBLISH_ROS_MESSAGE, buildROSMessage(ROS_TOPICS.HEADING_CONTROL_KI, ROS_MSG_TYPES.Float32, ki));
     dispatch({ type: ActionTypes.SET_HEADING_CONTROLLER_KI, data: ki });
   }
 }
 
 export function setHeadingControllerKp(kp) {
   return (dispatch, getStore, args) => {
-    emit(WS_MESSAGE_TYPES.SET_HEADING_CONTROL_KP, kp);
+    emit(WS_EVENT_TYPES.PUBLISH_ROS_MESSAGE, buildROSMessage(ROS_TOPICS.HEADING_CONTROL_KP, ROS_MSG_TYPES.Float32, kp));
     dispatch({ type: ActionTypes.SET_HEADING_CONTROLLER_KP, data: kp });
   };
 }
 
 export function setTargetHeading(theta) {
   return (dispatch, getStore, args) => {
-    emit(WS_MESSAGE_TYPES.SET_TARGET_HEADING, theta);
+    emit(WS_EVENT_TYPES.PUBLISH_ROS_MESSAGE, buildROSMessage(ROS_TOPICS.TARGET_HEADING, ROS_MSG_TYPES.Float32, theta));
     dispatch({ type: ActionTypes.SET_HEADING_CONTROLLER_TARGET_HEADING, data: theta });
+  };
+}
+
+function buildROSMessage(topicName, type, data, saveToDb=true) {
+  return {
+    topicName,
+    type,
+    data,
+    saveToDb,
   };
 }
 

@@ -5,21 +5,34 @@ import io from 'socket.io-client';
 
 const socket = io.connect(window.SERVER_URI);
 
-export const MESSAGE_TYPES = {
-  HEADING: 'heading',
-  POSITION: 'position',
-  HEADING_CONTROL_KI: 'control/heading/ki',
-  HEADING_CONTROL_KP: 'control/heading/kp',
-  HEADING_CONTROL_ERROR_DESIRED_RUDDER_POS: 'control/heading/error_desired_rudder_pos',
-  SET_HEADING_CONTROL_KP: 'set:control/heading/kp',
-  SET_HEADING_CONTROL_KI: 'set:control/heading/ki',
-  SET_TARGET_HEADING: 'set:control/target_heading'
+export const WS_EVENT_TYPES = {
+  PUBLISH_ROS_MESSAGE: 'publishROSMessage',
+};
+
+export const ROS_TOPICS = {
+  HEADING: '/boat/heading',
+  POSITION: '/boat/position',
+  HEADING_CONTROL_KI: '/control/heading/ki',
+  HEADING_CONTROL_KP: '/control/heading/kp',
+  HEADING_CONTROL_ERROR_DESIRED_RUDDER_POS: '/control/heading/error_desired_rudder_pos',
+  TARGET_HEADING: '/control/heading/target'
+};
+
+export const ROS_MSG_TYPES = {
+  Float32: 'Float32',
+  Float64: 'Float64',
+  Float32MultiArray: 'Float32MultiArray',
+  Float64MultiArray: 'Float64MultiArray',
+  GridMap: 'GridMap',
+  Image: 'Image',
+  Pose2D: 'Pose2D',
+  String: 'String',
 };
 
 export const init = ( store ) => {
 
-  Object.keys(MESSAGE_TYPES).forEach(msgType => socket.on(MESSAGE_TYPES[msgType], (payload) =>
-        store.dispatch({ type: MESSAGE_TYPES[msgType], data: payload.data })
+  Object.keys(ROS_TOPICS).forEach(topic => socket.on(ROS_TOPICS[topic], (payload) =>
+        store.dispatch({ type: ROS_TOPICS[topic], data: payload.data })
       )
     );
 };
