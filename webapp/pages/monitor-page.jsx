@@ -1,6 +1,7 @@
 import React from 'react';
 import MapContainer from '../containers/map-container';
 import StatusSidebarContainer from '../containers/status-sidebar-container';
+import ROSConsole from '../ros-console/ros-console';
 
 export default class MonitorPage extends React.Component {
 
@@ -13,7 +14,7 @@ export default class MonitorPage extends React.Component {
           </div>
           <StatusSidebarContainer />
         </div>
-        {/*Console goes here*/}
+        <ROSConsole/>
       </div>
     )
   }
