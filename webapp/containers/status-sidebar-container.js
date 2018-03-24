@@ -5,6 +5,7 @@
 import { connect } from 'react-redux';
 import StatusSidebar from '../status-sidebar/status-sidebar';
 import {
+  setOperatingMode,
   setHeadingControllerKi,
   setHeadingControllerKp,
   setTargetHeading,
@@ -31,6 +32,9 @@ const mapDispatchToProps = dispatch => {
     },
     setTargetHeading: (e) => {
       dispatch(setTargetHeading(e.target.value));
+    },
+    setOperatingMode: (e) => {
+      dispatch(setOperatingMode(parseInt(e.target.value)));
     }
   }
 };

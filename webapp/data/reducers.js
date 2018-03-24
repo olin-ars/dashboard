@@ -58,6 +58,10 @@ export function control(state = {}, action) {
     case ActionTypes.SET_HEADING_CONTROLLER_TARGET_HEADING:
       newState.heading.targetHeading = action.data;
       return newState;
+    case ActionTypes.SET_OPERATING_MODE:
+    case ROS_TOPICS.CONTROL_OPERATING_MODE:
+      newState.operatingMode = action.data;
+      return newState;
     case ROS_TOPICS.HEADING_CONTROL_ERROR_DESIRED_RUDDER_POS:
       newState.heading.error = action.data.error;
       newState.heading.desiredRudderPos = action.data.desiredRudderPos;

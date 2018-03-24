@@ -33,6 +33,7 @@ export default function () {
         desiredRudderPos: 0,
         targetHeading: 0,
       },
+      operatingMode: 0,
     },
     environment: {
       wind: {

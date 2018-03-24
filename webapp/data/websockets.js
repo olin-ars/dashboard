@@ -12,10 +12,11 @@ export const WS_EVENT_TYPES = {
 export const ROS_TOPICS = {
   HEADING: '/boat/heading',
   POSITION: '/boat/position',
+  CONTROL_OPERATING_MODE: '/control/mode',
   HEADING_CONTROL_KI: '/control/heading/ki',
   HEADING_CONTROL_KP: '/control/heading/kp',
   HEADING_CONTROL_ERROR_DESIRED_RUDDER_POS: '/control/heading/error_desired_rudder_pos',
-  TARGET_HEADING: '/control/heading/target'
+  HEADING_CONTROL_TARGET_HEADING: '/control/heading/target',
 };
 
 export const ROS_MSG_TYPES = {
@@ -27,6 +28,7 @@ export const ROS_MSG_TYPES = {
   Image: 'Image',
   Pose2D: 'Pose2D',
   String: 'String',
+  UInt8: 'UInt8',
 };
 
 export const init = ( store ) => {

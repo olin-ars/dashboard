@@ -20,6 +20,7 @@ export const ActionTypes = {
   SET_SIDEBAR_MODE: 'SET_SIDEBAR_MODE', // Sets which panes (components) are visible in the sidebar based on a layout template
   TOGGLE_SIDEBAR_VISIBILITY: 'TOGGLE_SIDEBAR_VISIBILITY', // Toggles the visibility of the app sidebar
   // Control parameters
+  SET_OPERATING_MODE: 'SET_OPERATING_MODE',
   SET_HEADING_CONTROLLER_KI: 'SET_HEADING_CONTROLLER_KI',
   SET_HEADING_CONTROLLER_KP: 'SET_HEADING_CONTROLLER_KP',
   SET_HEADING_CONTROLLER_TARGET_HEADING: 'SET_HEADING_CONTROLLER_TARGET_HEADING',
@@ -124,6 +125,13 @@ export function handleROSMessage(msg) {
 
 // ########## Begin Control Parameter Tweaking ############ //
 
+export function setOperatingMode(mode) {
+  return (dispatch, getStore, {emit}) => {
+    emit(WS_EVENT_TYPES.PUBLISH_ROS_MESSAGE, buildROSMessage((ROS_TOPICS.CONTROL_OPERATING_MODE, ROS_MSG_TYPES.UInt8, mode)));
+    dispatch({ type: ActionTypes.SET_OPERATING_MODE, data: mode });
+  }
+}
+
 export function setHeadingControllerKi(ki) {
   return (dispatch, getStore, {emit}) => {
     emit(WS_EVENT_TYPES.PUBLISH_ROS_MESSAGE, buildROSMessage(ROS_TOPICS.HEADING_CONTROL_KI, ROS_MSG_TYPES.Float32, ki));
@@ -140,7 +148,7 @@ export function setHeadingControllerKp(kp) {
 
 export function setTargetHeading(theta) {
   return (dispatch, getStore, args) => {
-    emit(WS_EVENT_TYPES.PUBLISH_ROS_MESSAGE, buildROSMessage(ROS_TOPICS.TARGET_HEADING, ROS_MSG_TYPES.Float32, theta));
+    emit(WS_EVENT_TYPES.PUBLISH_ROS_MESSAGE, buildROSMessage(ROS_TOPICS.HEADING_CONTROL_TARGET_HEADING, ROS_MSG_TYPES.Float32, theta));
     dispatch({ type: ActionTypes.SET_HEADING_CONTROLLER_TARGET_HEADING, data: theta });
   };
 }
