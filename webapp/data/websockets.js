@@ -17,6 +17,7 @@ export const ROS_TOPICS = {
   HEADING_CONTROL_KP: '/control/heading/kp',
   HEADING_CONTROL_ERROR_DESIRED_RUDDER_POS: '/control/heading/error_desired_rudder_pos',
   HEADING_CONTROL_TARGET_HEADING: '/control/heading/target',
+  RUDDER_POSITION: '/rudder_pos',
 };
 
 export const ROS_MSG_TYPES = {

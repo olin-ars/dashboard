@@ -3,6 +3,7 @@ import StatusSidebarItemWrapper from './status-sidebar-item-wrapper';
 import BoatVisualizer from './boat-visualizer';
 import OperatingModeSelector from './operating-mode-selector';
 import HeadingController from './heading-controller';
+import RudderMonitor from './rudder-monitor';
 import WindInfo from './wind-info';
 
 export default class StatusSidebar extends React.Component {
@@ -13,6 +14,11 @@ export default class StatusSidebar extends React.Component {
         <StatusSidebarItemWrapper title="Operating Mode" >
           <OperatingModeSelector {...this.props} />
         </StatusSidebarItemWrapper>
+
+        <StatusSidebarItemWrapper title="Rudder Position" >
+          <RudderMonitor {...this.props} />
+        </StatusSidebarItemWrapper>
+
         <StatusSidebarItemWrapper title="Positioning">
           <BoatVisualizer {...this.props} />
         </StatusSidebarItemWrapper>

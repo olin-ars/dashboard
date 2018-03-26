@@ -40,6 +40,9 @@ export function boat(state = {}, action) {
     case ROS_TOPICS.HEADING:
       newState.heading = action.data;
       return newState;
+    case ROS_TOPICS.RUDDER_POSITION:
+      newState.rudderPos = action.data;
+      return newState;
     default:
       return state;
   }

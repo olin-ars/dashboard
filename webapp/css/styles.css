@@ -62,6 +62,10 @@ body {
     flex-grow: 5;
 }
 
+.sidebar input[type='text'] {
+    width: 100%;
+}
+
 .sidebar.status {
     max-width: 25em;
     background-color: #f8f8f8;

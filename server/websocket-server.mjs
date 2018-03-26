@@ -39,20 +39,19 @@ export default class WebSocketServer {
     }
 
     onReporterMsgReceive(socket, msg) {
-      console.log(msg)
-        if (this.telemetryDataHandler) {
-            this.telemetryDataHandler(msg);
-        }
-        // Push the msg to any observers
-        if (this.observingNs) {
-            const topic = msg.topicName;
-            delete msg.topicName;
-            if (process.env.VERBOSE) {
-              console.log(`Reporting to ${topic}:`);
-              console.log(msg);
-            }
-            this.observingNs.emit(topic, msg);
-        }
+      if (this.telemetryDataHandler) {
+          this.telemetryDataHandler(msg);
+      }
+      // Push the msg to any observers
+      if (this.observingNs) {
+          const topic = msg.topicName;
+          delete msg.topicName;
+          if (process.env.VERBOSE) {
+            console.log(`Reporting to ${topic}:`);
+            console.log(msg);
+          }
+          this.observingNs.emit(topic, msg);
+      }
     }
 
   onPublishROSMessageMessage(data) {

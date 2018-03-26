@@ -18,6 +18,7 @@ const mapStateToProps = state => {
     heading: state.boat.heading,
     control: state.control,
     wind: state.environment.wind,
+    rudderPos: state.boat.rudderPos,
   }
 };
 

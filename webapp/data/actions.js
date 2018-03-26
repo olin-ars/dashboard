@@ -127,8 +127,8 @@ export function handleROSMessage(msg) {
 
 export function setOperatingMode(mode) {
   return (dispatch, getStore, {emit}) => {
-    emit(WS_EVENT_TYPES.PUBLISH_ROS_MESSAGE, buildROSMessage((ROS_TOPICS.CONTROL_OPERATING_MODE, ROS_MSG_TYPES.UInt8, mode)));
-    dispatch({ type: ActionTypes.SET_OPERATING_MODE, data: mode });
+    emit(WS_EVENT_TYPES.PUBLISH_ROS_MESSAGE, buildROSMessage(ROS_TOPICS.CONTROL_OPERATING_MODE, ROS_MSG_TYPES.UInt8, mode));
+    // dispatch({ type: ActionTypes.SET_OPERATING_MODE, data: mode }); Change will propagate through ROS back to client
   }
 }
 

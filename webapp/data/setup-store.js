@@ -24,6 +24,7 @@ export default function () {
     boat: {
       latitude: 0,
       longitude: 0,
+      rudderPos: 0,
     },
     control: {
       heading: {
