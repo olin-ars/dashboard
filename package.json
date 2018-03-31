@@ -46,6 +46,6 @@
     "webpack-dev-server": "2.11.1"
   },
   "engines": {
-    "node": "9.2.0"
+    "node": "^9.2.0"
   }
 }
