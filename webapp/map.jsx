@@ -1,5 +1,5 @@
 import React from 'react';
-import {Map, InfoWindow, Marker, GoogleApiWrapper} from 'google-maps-react';
+import {Map, InfoWindow, Marker, Polyline, GoogleApiWrapper} from 'google-maps-react';
 
 
 export class MapContainer extends React.Component {
@@ -15,6 +15,30 @@ export class MapContainer extends React.Component {
       lng: -71.030743,
     };
 
+    const waypointMarkers = [];
+    const waypointCoords = [];
+    const lines = [];
+    this.props.waypoints.forEach((wp, index) => {
+      const coords = {lat: wp.lat, lng: wp.long};
+      waypointMarkers.push((
+        <Marker
+          title={wp.name || `Waypoint ${index+1}`}
+          key={index}
+          position={coords}
+        />
+      ));
+      waypointCoords.push(coords);
+    });
+    const pathLines = waypointCoords.length > 1 ? (
+      <Polyline
+        path={waypointCoords}
+        strokeColor="#FF0000"
+        strokeOpacity={0.6}
+        strokeWeight={2}
+        fillColor="#FF0000"
+        fillOpacity={0.35} />
+    ) : null;
+
     return (
       <Map
         google={this.props.google}
@@ -26,6 +50,8 @@ export class MapContainer extends React.Component {
         <Marker
           name="Boat!"
           position={this.props.boatCoords} />
+        {waypointMarkers}
+        {pathLines}
       </Map>
     )
   }

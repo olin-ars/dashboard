@@ -44,6 +44,9 @@ export default function () {
         },
       },
     },
+    planning: {
+      waypoints: [],
+    },
   };
 
   const middleware = [
