@@ -1,9 +1,5 @@
 import { createStore, applyMiddleware, combineReducers, compose } from 'redux'
 import thunkMiddleware from 'redux-thunk'
-// import { Router, Route, Switch } from 'react-router'
-// import ReactGA from 'react-ga';
-// import createHistory from 'history/createBrowserHistory';
-// import { routerReducer, routerMiddleware } from 'react-router-redux'
 import {
   emit,
   init as websocketInit,
@@ -38,8 +34,14 @@ export default function () {
     },
     environment: {
       wind: {
-        speed: 0,
-        direction: 0,
+        absolute: {
+          speed: 0,
+          direction: 0,
+        },
+        relative: {
+          speed: 0,
+          direction: 0,
+        },
       },
     },
   };

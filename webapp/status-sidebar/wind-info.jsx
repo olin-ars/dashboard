@@ -7,8 +7,8 @@ export default class WindInfo extends React.Component {
   render() {
     return (
       <div className="wind-info">
-        <StatText title="Direction">{this.props.direction}&deg;</StatText>
-        <StatText title="Speed">{this.props.speed} knots</StatText>
+        <StatText title="Direction">{this.props.windRel.direction}&deg;</StatText>
+        <StatText title="Speed">{this.props.windRel.speed} knots</StatText>
       </div>
     )
   }

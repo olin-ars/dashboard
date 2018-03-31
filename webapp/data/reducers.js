@@ -78,6 +78,10 @@ export function environment(state = {}, action) {
   let newState = Object.assign({}, state);
 
   switch (action.type) {
+    case ROS_TOPICS.WIND_RELATIVE:
+      newState.wind.relative.direction = action.data.theta;
+      newState.wind.relative.speed = action.data.x;
+      return newState;
     default:
       return state;
   }

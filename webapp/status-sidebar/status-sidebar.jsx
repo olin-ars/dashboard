@@ -36,7 +36,7 @@ export default class StatusSidebar extends React.Component {
         </StatusSidebarItemWrapper>
 
         <StatusSidebarItemWrapper title="Wind">
-          <WindInfo direction={this.props.wind.direction} speed={this.props.wind.speed}/>
+          <WindInfo {...this.props}/>
         </StatusSidebarItemWrapper>
       </div>
     )
