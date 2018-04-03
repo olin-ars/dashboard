@@ -1,5 +1,5 @@
 import React from 'react';
-import {Map, InfoWindow, Marker, Polyline, GoogleApiWrapper} from 'google-maps-react';
+import {Map, Marker, Circle, Polyline, GoogleApiWrapper} from 'google-maps-react';
 
 
 export class MapContainer extends React.Component {
@@ -21,10 +21,15 @@ export class MapContainer extends React.Component {
     this.props.waypoints.forEach((wp, index) => {
       const coords = {lat: wp.lat, lng: wp.long};
       waypointMarkers.push((
-        <Marker
+        <Circle
           title={wp.name || `Waypoint ${index+1}`}
           key={index}
-          position={coords}
+          center={coords}
+          radius={this.props.waypointRadius}
+          strokeColor="#0000FF"
+          fillColor="#0000FF"
+          fillOpacity={0.3}
+          strokeWeight={3}
         />
       ));
       waypointCoords.push(coords);

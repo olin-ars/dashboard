@@ -46,6 +46,7 @@ export default function () {
     },
     planning: {
       waypoints: [],
+      waypointRadius: 10, // meters
     },
   };
 

@@ -14,6 +14,7 @@ const mapStateToProps = state => {
       lng: state.boat.longitude,
     },
     waypoints: state.planning.waypoints,
+    waypointRadius: state.planning.waypointRadius,
   };
 };
 

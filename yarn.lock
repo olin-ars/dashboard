@@ -3277,9 +3277,9 @@ globby@^6.1.0:
     pify "^2.0.0"
     pinkie-promise "^2.0.0"
 
-google-maps-react@^1.1.11:
+"google-maps-react@https://github.com/kylecombes/google-maps-react.git":
   version "1.1.11"
-  resolved "https://registry.yarnpkg.com/google-maps-react/-/google-maps-react-1.1.11.tgz#7e5ccb88e65c06a8f8db470eaea1ec30d0572511"
+  resolved "https://github.com/kylecombes/google-maps-react.git#3d479f9f84c92a25ef67313f6a5142852b2716ff"
   dependencies:
     history "^3.0.0"
     invariant "^2.2.1"
@@ -3718,9 +3718,15 @@ interpret@^1.0.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/interpret/-/interpret-1.1.0.tgz#7ed1b1410c6a0e0f78cf95d3b8440c63f78b8614"
 
-invariant@^2.0.0, invariant@^2.2.1:
+invariant@^2.0.0:
   version "2.2.3"
   resolved "https://registry.yarnpkg.com/invariant/-/invariant-2.2.3.tgz#1a827dfde7dcbd7c323f0ca826be8fa7c5e9d688"
+  dependencies:
+    loose-envify "^1.0.0"
+
+invariant@^2.2.1:
+  version "2.2.4"
+  resolved "https://registry.yarnpkg.com/invariant/-/invariant-2.2.4.tgz#610f3c92c9359ce1db616e538008d23ff35158e6"
   dependencies:
     loose-envify "^1.0.0"
 
