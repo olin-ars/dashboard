@@ -7,6 +7,7 @@ const socket = io.connect(window.SERVER_URI);
 
 export const WS_EVENT_TYPES = {
   PUBLISH_ROS_MESSAGE: 'publishROSMessage',
+  START_STOP_ROSBAG: 'startStopRosbag',
 };
 
 export const ROS_TOPICS = {

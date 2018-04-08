@@ -24,6 +24,7 @@ export const ActionTypes = {
   SET_HEADING_CONTROLLER_KI: 'SET_HEADING_CONTROLLER_KI',
   SET_HEADING_CONTROLLER_KP: 'SET_HEADING_CONTROLLER_KP',
   SET_HEADING_CONTROLLER_TARGET_HEADING: 'SET_HEADING_CONTROLLER_TARGET_HEADING',
+  SET_ROSBAG_STATUS: 'SET_ROSBAG_STATUS',
 };
 
 // Sections:
@@ -102,6 +103,14 @@ export function setPageTitlePrefix(newTitle) {
 
 // ########## End General UI Actions ########## //
 
+
+export function startStopRosbag(doStart) {
+  return (dispatch, getStore, {emit}) => {
+    const action = doStart ? 'start' : 'stop';
+    emit(WS_EVENT_TYPES.START_STOP_ROSBAG, { action });
+    dispatch({ type: ActionTypes.SET_ROSBAG_STATUS, data: doStart });
+  };
+}
 
 // ########## Begin Navigation Actions ########## //
 

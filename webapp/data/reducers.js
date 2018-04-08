@@ -8,12 +8,6 @@ export function general(state = {}, action) {
     let newState = Object.assign({}, state);
 
     switch (action.type) {
-        case ActionTypes.SET_VIEW_MODE:
-            newState.viewMode = action.data;
-            return newState;
-        case ActionTypes.SET_FOCUSED_DATE:
-            newState.currentlyViewingDate = action.data;
-            return newState;
         case ActionTypes.DISPLAY_MESSAGE:
             alert(action.message);
             return state;
@@ -24,6 +18,9 @@ export function general(state = {}, action) {
         case ActionTypes.SET_PAGE_TITLE_PREFIX:
             window.document.title = action.title;
             newState.general = Object.assign({}, newState.general, { pageTitlePrefix: action.title });
+            return newState;
+        case ActionTypes.SET_ROSBAG_STATUS:
+            newState.rosbagStarted = action.data;
             return newState;
         default:
             return state;

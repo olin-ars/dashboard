@@ -9,6 +9,7 @@ export default class WebSocketServer {
         this.onObserverConnection = this.onObserverConnection.bind(this);
         this.onReporterConnection = this.onReporterConnection.bind(this);
         this.onPublishROSMessageMessage = this.onPublishROSMessageMessage.bind(this);
+        this.onStartStopRosbag = this.onStartStopRosbag.bind(this);
     }
 
     start(httpServer) {
@@ -30,6 +31,7 @@ export default class WebSocketServer {
     onObserverConnection(socket) {
         console.log('Observer connected');
         socket.on('publishROSMessage', (data) => this.onPublishROSMessageMessage(data));
+        socket.on('startStopRosbag', command => this.onStartStopRosbag(command));
         socket.on('disconnect', () => this.onDisconnect(socket));
 
     }
@@ -57,6 +59,14 @@ export default class WebSocketServer {
   onPublishROSMessageMessage(data) {
     if (this.reportingNs) {
       this.reportingNs.emit('publishROSMessage', data);
+    }
+  }
+
+  onStartStopRosbag(command) {
+    console.log('Received command:')
+    console.log(command)
+    if (this.reportingNs) {
+      this.reportingNs.emit('startStopRosbag', command);
     }
   }
 

@@ -3,6 +3,7 @@ import StatusSidebarItemWrapper from './status-sidebar-item-wrapper';
 import BoatVisualizer from './boat-visualizer';
 import OperatingModeSelector from './operating-mode-selector';
 import HeadingController from './heading-controller';
+import ROSBagControl from './rosbag-control';
 import RudderMonitor from './rudder-monitor';
 import WindInfo from './wind-info';
 
@@ -37,6 +38,10 @@ export default class StatusSidebar extends React.Component {
 
         <StatusSidebarItemWrapper title="Wind">
           <WindInfo {...this.props}/>
+        </StatusSidebarItemWrapper>
+
+        <StatusSidebarItemWrapper title="Rosbag">
+          <ROSBagControl {...this.props} />
         </StatusSidebarItemWrapper>
       </div>
     )

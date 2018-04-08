@@ -16,6 +16,7 @@ export default function () {
       isMobile,
       pageTitlePrefix: 'Boat Monitor',
       pageTitleSuffix: 'Olin Aquatic Robotic Systems',
+      rosbagStarted: false,
     },
     boat: {
       latitude: 0,

@@ -9,6 +9,7 @@ import {
   setHeadingControllerKi,
   setHeadingControllerKp,
   setTargetHeading,
+  startStopRosbag,
 } from "../data/actions";
 
 const mapStateToProps = state => {
@@ -20,6 +21,7 @@ const mapStateToProps = state => {
     windAbs: state.environment.wind.absolute,
     windRel: state.environment.wind.relative,
     rudderPos: state.boat.rudderPos,
+    rosbagStarted: state.general.rosbagStarted,
   }
 };
 
@@ -37,6 +39,10 @@ const mapDispatchToProps = dispatch => {
     },
     setOperatingMode: (e) => {
       dispatch(setOperatingMode(parseInt(e.target.value)));
+    },
+    startStopRosbag: (e) => {
+      const doStart = e.target.value === 'on';
+      dispatch(startStopRosbag(doStart));
     }
   }
 };
