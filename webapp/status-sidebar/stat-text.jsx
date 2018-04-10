@@ -15,6 +15,9 @@ export default class StatText extends React.Component {
 }
 
 StatText.propTypes = {
-  title: PropTypes.string.isRequired,
-  children: PropTypes.string.isRequired,
+  title: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.element,
+  ]).isRequired,
+  children: PropTypes.element,
 };

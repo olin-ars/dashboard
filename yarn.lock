@@ -3279,7 +3279,7 @@ globby@^6.1.0:
 
 "google-maps-react@https://github.com/kylecombes/google-maps-react.git":
   version "1.1.11"
-  resolved "https://github.com/kylecombes/google-maps-react.git#3d479f9f84c92a25ef67313f6a5142852b2716ff"
+  resolved "https://github.com/kylecombes/google-maps-react.git#cd6da3695ed88c6a4e9c5f031a4d91790405a610"
   dependencies:
     history "^3.0.0"
     invariant "^2.2.1"

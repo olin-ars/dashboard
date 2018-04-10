@@ -91,6 +91,10 @@ export function planning(state = {}, action) {
     case ROS_TOPICS.WAYPOINTS:
       newState.waypoints = action.data;
       return newState;
+    case ROS_TOPICS.WAYPOINT_RADIUS:
+    case ActionTypes.SET_WAYPOINT_REACHED_RADIUS:
+      newState.waypointRadius = action.data;
+      return newState;
     default:
       return state;
   }

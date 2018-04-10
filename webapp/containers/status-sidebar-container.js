@@ -10,7 +10,8 @@ import {
   setHeadingControllerKp,
   setTargetHeading,
   startStopRosbag,
-} from "../data/actions";
+  setWaypointReachedRadius,
+} from '../data/actions';
 
 const mapStateToProps = state => {
   return {
@@ -22,6 +23,7 @@ const mapStateToProps = state => {
     windRel: state.environment.wind.relative,
     rudderPos: state.boat.rudderPos,
     rosbagStarted: state.general.rosbagStarted,
+    planning: state.planning,
   }
 };
 
@@ -43,7 +45,13 @@ const mapDispatchToProps = dispatch => {
     startStopRosbag: (e) => {
       const doStart = e.target.value === 'on';
       dispatch(startStopRosbag(doStart));
-    }
+    },
+    setWaypointReachedRadius: (e) => {
+      const radius = parseInt(e.target.value);
+      if (!isNaN(radius)) {
+        dispatch(setWaypointReachedRadius(radius));
+      }
+    },
   }
 };
 

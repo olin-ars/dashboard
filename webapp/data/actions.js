@@ -25,6 +25,7 @@ export const ActionTypes = {
   SET_HEADING_CONTROLLER_KP: 'SET_HEADING_CONTROLLER_KP',
   SET_HEADING_CONTROLLER_TARGET_HEADING: 'SET_HEADING_CONTROLLER_TARGET_HEADING',
   SET_ROSBAG_STATUS: 'SET_ROSBAG_STATUS',
+  SET_WAYPOINT_REACHED_RADIUS: 'SET_WAYPOINT_REACHED_RADIUS',
 };
 
 // Sections:
@@ -124,13 +125,14 @@ export function setRoute(route) {
     }
 }
 
-// ########## End Navigation Actions ########## //
-
-export function handleROSMessage(msg) {
+export function setWaypointReachedRadius(radius) {
   return (dispatch, getStore, {emit}) => {
-
-  };
+    emit(WS_EVENT_TYPES.PUBLISH_ROS_MESSAGE, buildROSMessage(ROS_TOPICS.WAYPOINT_RADIUS, ROS_MSG_TYPES.UInt16, radius));
+    // dispatch({type: ActionTypes.SET_WAYPOINT_REACHED_RADIUS, data: radius});
+  }
 }
+
+// ########## End Navigation Actions ########## //
 
 // ########## Begin Control Parameter Tweaking ############ //
 

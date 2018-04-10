@@ -20,6 +20,7 @@ export const ROS_TOPICS = {
   HEADING_CONTROL_TARGET_HEADING: '/control/heading/target',
   RUDDER_POSITION: '/rudder_pos',
   WAYPOINTS: '/planning/waypoints',
+  WAYPOINT_RADIUS: '/planning/waypoint_radius',
   WIND_RELATIVE: '/weather/wind/rel',
 };
 
@@ -33,6 +34,9 @@ export const ROS_MSG_TYPES = {
   Pose2D: 'Pose2D',
   String: 'String',
   UInt8: 'UInt8',
+  UInt16: 'UInt16',
+  UInt32: 'UInt32',
+  UInt64: 'UInt64',
 };
 
 export const init = ( store ) => {
