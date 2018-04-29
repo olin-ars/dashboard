@@ -138,7 +138,7 @@ export function setGoalLat(val) {
   return (dispatch, getStore, {emit}) => {
     dispatch({ type: ActionTypes.SET_GOAL_LAT, data: val });
     const data = {
-      x: getStore().planning.goalPosition.long,
+      x: getStore().planning.goalPosition.lon,
       y: val,
     };
     emit(WS_EVENT_TYPES.PUBLISH_ROS_MESSAGE, buildROSMessage(ROS_TOPICS.GOAL_POSITION, ROS_MSG_TYPES.Pose2D, data));
