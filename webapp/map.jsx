@@ -11,8 +11,8 @@ export class MapContainer extends React.Component {
     };
 
     const initialCenter = {
-      lat: 42.342939,
-      lng: -71.030743,
+      lat: 42.288215,
+      lng: -71.309211,
     };
 
     const waypointMarkers = [];
@@ -47,14 +47,16 @@ export class MapContainer extends React.Component {
     return (
       <Map
         google={this.props.google}
-        zoom={14}
+        zoom={16}
         style={style}
         initialCenter={initialCenter}
-        centerAroundCurrentLocation
       >
         <Marker
           name="Boat!"
           position={this.props.boatCoords} />
+        <Marker
+          name="Goal!"
+          position={this.props.goalCoords} />
         {waypointMarkers}
         {pathLines}
       </Map>

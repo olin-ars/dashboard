@@ -13,6 +13,10 @@ const mapStateToProps = state => {
       lat: state.boat.latitude,
       lng: state.boat.longitude,
     },
+    goalCoords: {
+      lat: state.planning.goalPosition.lat,
+      lng: state.planning.goalPosition.lon,
+    },
     waypoints: state.planning.waypoints,
     waypointRadius: state.planning.waypointRadius,
   };

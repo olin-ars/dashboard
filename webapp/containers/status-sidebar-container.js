@@ -1,18 +1,19 @@
 // This container is a sort of middleware between the React sidebar and the Redux data store
 
-// This function passes values/objects from the Redux state to the React component as props
-
 import { connect } from 'react-redux';
 import StatusSidebar from '../status-sidebar/status-sidebar';
 import {
   setOperatingMode,
   setHeadingControllerKi,
   setHeadingControllerKp,
+  setGoalLat,
+  setGoalLon,
   setTargetHeading,
   startStopRosbag,
   setWaypointReachedRadius,
 } from '../data/actions';
 
+// This function passes values/objects from the Redux state to the React component as props
 const mapStateToProps = state => {
   return {
     latitude: state.boat.latitude,
@@ -51,6 +52,12 @@ const mapDispatchToProps = dispatch => {
       if (!isNaN(radius)) {
         dispatch(setWaypointReachedRadius(radius));
       }
+    },
+    setGoalLat: (e) => {
+      dispatch(setGoalLat(e.target.value));
+    },
+    setGoalLon: (e) => {
+      dispatch(setGoalLon(e.target.value));
     },
   }
 };

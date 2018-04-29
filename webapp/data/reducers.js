@@ -88,6 +88,18 @@ export function planning(state = {}, action) {
   let newState = Object.assign({}, state);
 
   switch (action.type) {
+    case ROS_TOPICS.GOAL_POSITION:
+      newState.goalPosition = {
+        lon: action.data.x,
+        lat: action.data.y,
+      };
+      return newState;
+    case ActionTypes.SET_GOAL_LAT:
+      newState.goalPosition.lat = action.data;
+      return newState;
+    case ActionTypes.SET_GOAL_LON:
+      newState.goalPosition.lon = action.data;
+      return newState;
     case ROS_TOPICS.WAYPOINTS:
       newState.waypoints = action.data;
       return newState;

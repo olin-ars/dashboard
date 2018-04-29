@@ -46,6 +46,10 @@ export default function () {
       },
     },
     planning: {
+      goalPosition: {
+        lat: 42.288215,
+        lon: -71.309211,
+      },
       waypoints: [],
       waypointRadius: 10, // meters
     },

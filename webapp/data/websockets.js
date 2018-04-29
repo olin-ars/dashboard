@@ -14,6 +14,7 @@ export const ROS_TOPICS = {
   HEADING: '/boat/heading',
   POSITION: '/boat/position',
   CONTROL_OPERATING_MODE: '/control/mode',
+  GOAL_POSITION: '/planning/goal_pos',
   HEADING_CONTROL_KI: '/control/heading/ki',
   HEADING_CONTROL_KP: '/control/heading/kp',
   HEADING_CONTROL_ERROR_DESIRED_RUDDER_POS: '/control/heading/error_desired_rudder_pos',

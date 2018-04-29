@@ -21,6 +21,8 @@ export const ActionTypes = {
   TOGGLE_SIDEBAR_VISIBILITY: 'TOGGLE_SIDEBAR_VISIBILITY', // Toggles the visibility of the app sidebar
   // Control parameters
   SET_OPERATING_MODE: 'SET_OPERATING_MODE',
+  SET_GOAL_LAT: 'SET_GOAL_LAT',
+  SET_GOAL_LON: 'SET_GOAL_LON',
   SET_HEADING_CONTROLLER_KI: 'SET_HEADING_CONTROLLER_KI',
   SET_HEADING_CONTROLLER_KP: 'SET_HEADING_CONTROLLER_KP',
   SET_HEADING_CONTROLLER_TARGET_HEADING: 'SET_HEADING_CONTROLLER_TARGET_HEADING',
@@ -129,6 +131,28 @@ export function setWaypointReachedRadius(radius) {
   return (dispatch, getStore, {emit}) => {
     emit(WS_EVENT_TYPES.PUBLISH_ROS_MESSAGE, buildROSMessage(ROS_TOPICS.WAYPOINT_RADIUS, ROS_MSG_TYPES.UInt16, radius));
     // dispatch({type: ActionTypes.SET_WAYPOINT_REACHED_RADIUS, data: radius});
+  }
+}
+
+export function setGoalLat(val) {
+  return (dispatch, getStore, {emit}) => {
+    dispatch({ type: ActionTypes.SET_GOAL_LAT, data: val });
+    const data = {
+      x: getStore().planning.goalPosition.long,
+      y: val,
+    };
+    emit(WS_EVENT_TYPES.PUBLISH_ROS_MESSAGE, buildROSMessage(ROS_TOPICS.GOAL_POSITION, ROS_MSG_TYPES.Pose2D, data));
+  }
+}
+
+export function setGoalLon(val) {
+  return (dispatch, getStore, {emit}) => {
+    dispatch({ type: ActionTypes.SET_GOAL_LON, data: val });
+    const data = {
+      x: val,
+      y: getStore().planning.goalPosition.lat,
+    };
+    emit(WS_EVENT_TYPES.PUBLISH_ROS_MESSAGE, buildROSMessage(ROS_TOPICS.GOAL_POSITION, ROS_MSG_TYPES.Pose2D, data));
   }
 }
 
