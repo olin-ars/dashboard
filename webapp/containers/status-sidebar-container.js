@@ -11,6 +11,8 @@ import {
   setTargetHeading,
   startStopRosbag,
   setWaypointReachedRadius,
+  setSpoofedWind,
+  setSpoofedPosition,
 } from '../data/actions';
 
 // This function passes values/objects from the Redux state to the React component as props
@@ -58,6 +60,12 @@ const mapDispatchToProps = dispatch => {
     },
     setGoalLon: (e) => {
       dispatch(setGoalLon(e.target.value));
+    },
+    spoofedWindChanged: (e) => {
+      dispatch(setSpoofedWind(e.currentTarget.name, e.currentTarget.value));
+    },
+    spoofedPositionChanged: (e) => {
+      dispatch(setSpoofedPosition(e.currentTarget.name, e.currentTarget.value));
     },
   }
 };

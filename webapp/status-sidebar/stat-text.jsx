@@ -19,5 +19,8 @@ StatText.propTypes = {
     PropTypes.string,
     PropTypes.element,
   ]).isRequired,
-  children: PropTypes.element,
+  children: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.element,
+  ]).isRequired,
 };

@@ -2,7 +2,6 @@
 
 import { ActionTypes } from './actions';
 import { ROS_TOPICS } from "./websockets";
-import SidebarModes from '../data/sidebar-modes';
 
 export function general(state = {}, action) {
     let newState = Object.assign({}, state);
@@ -55,6 +54,7 @@ export function control(state = {}, action) {
     case ActionTypes.SET_HEADING_CONTROLLER_KP:
       newState.heading.kp = action.data;
       return newState;
+    case ROS_TOPICS.HEADING_CONTROL_TARGET_HEADING:
     case ActionTypes.SET_HEADING_CONTROLLER_TARGET_HEADING:
       newState.heading.targetHeading = action.data;
       return newState;
@@ -76,8 +76,10 @@ export function environment(state = {}, action) {
 
   switch (action.type) {
     case ROS_TOPICS.WIND_RELATIVE:
-      newState.wind.relative.direction = action.data.theta;
-      newState.wind.relative.speed = action.data.x;
+      newState.wind.relative = Object.assign({}, newState.wind.relative, {
+        direction: action.data.theta,
+        speed: action.data.x,
+      });
       return newState;
     default:
       return state;

@@ -156,6 +156,30 @@ export function setGoalLon(val) {
   }
 }
 
+export function setSpoofedWind(name, value) {
+  return (dispatch, getStore, {emit}) => {
+    const relWind = getStore().environment.wind.relative;
+    const data = {
+      x: relWind.speed,
+      theta: relWind.direction,
+      [name]: parseFloat(value), // This will override one of the previous
+    };
+    emit(WS_EVENT_TYPES.PUBLISH_ROS_MESSAGE, buildROSMessage(ROS_TOPICS.WIND_RELATIVE, ROS_MSG_TYPES.Pose2D, data));
+  };
+}
+
+export function setSpoofedPosition(name, value) {
+  return (dispatch, getStore, {emit}) => {
+    const boat = getStore().boat;
+    const data = {
+      x: boat.longitude,
+      y: boat.latitude,
+      [name]: parseFloat(value), // This will override one of the previous
+    };
+    emit(WS_EVENT_TYPES.PUBLISH_ROS_MESSAGE, buildROSMessage(ROS_TOPICS.POSITION, ROS_MSG_TYPES.Pose2D, data));
+  };
+}
+
 // ########## End Navigation Actions ########## //
 
 // ########## Begin Control Parameter Tweaking ############ //
