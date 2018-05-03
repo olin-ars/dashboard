@@ -158,13 +158,13 @@ export function setGoalLon(val) {
 
 export function setSpoofedWind(name, value) {
   return (dispatch, getStore, {emit}) => {
-    const relWind = getStore().environment.wind.relative;
+    const absWind = getStore().environment.wind.absolute;
     const data = {
-      x: relWind.speed,
-      theta: relWind.direction,
+      x: absWind.speed,
+      theta: absWind.direction,
       [name]: parseFloat(value), // This will override one of the previous
     };
-    emit(WS_EVENT_TYPES.PUBLISH_ROS_MESSAGE, buildROSMessage(ROS_TOPICS.WIND_RELATIVE, ROS_MSG_TYPES.Pose2D, data));
+    emit(WS_EVENT_TYPES.PUBLISH_ROS_MESSAGE, buildROSMessage(ROS_TOPICS.WIND_TRUE, ROS_MSG_TYPES.Pose2D, data));
   };
 }
 

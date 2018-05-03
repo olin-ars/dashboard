@@ -24,17 +24,17 @@ export default class WindInfo extends React.Component {
       <div className="wind-info">
         {checkbox}
         <StatText title="Direction">
-          <input type="text" name="theta" value={this.props.windRel.direction} onChange={this.props.spoofedWindChanged}/>
+          <input type="text" name="theta" value={this.props.windAbs.direction} onChange={this.props.spoofedWindChanged}/>
         </StatText>
         <StatText title="Speed">
-          <input type="text" name="x" value={this.props.windRel.speed} onChange={this.props.spoofedWindChanged}/>
+          <input type="text" name="x" value={this.props.windAbs.speed} onChange={this.props.spoofedWindChanged}/>
         </StatText>
       </div>
     ) : (
       <div className="wind-info">
         {checkbox}
-        <StatText title="Direction">{this.props.windRel.direction}&deg;</StatText>
-        <StatText title="Speed">{this.props.windRel.speed} knots</StatText>
+        <StatText title="Direction">{this.props.windAbs.direction}&deg;</StatText>
+        <StatText title="Speed">{this.props.windAbs.speed} knots</StatText>
       </div>
     );
   }
@@ -42,7 +42,7 @@ export default class WindInfo extends React.Component {
 }
 
 WindInfo.propTypes = {
-  windRel: PropTypes.object.isRequired,
+  windAbs: PropTypes.object.isRequired,
   spoofedWindChanged: PropTypes.func,
 };
 

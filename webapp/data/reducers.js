@@ -81,6 +81,12 @@ export function environment(state = {}, action) {
         speed: action.data.x,
       });
       return newState;
+    case ROS_TOPICS.WIND_TRUE:
+      newState.wind.absolute = Object.assign({}, newState.wind.absolute, {
+        direction: action.data.theta,
+        speed: action.data.x,
+      });
+      return newState;
     default:
       return state;
   }
