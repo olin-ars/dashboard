@@ -14,7 +14,9 @@
     "dev": "webpack-dev-server --inline --hot",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
-    "server": "node --experimental-modules server/index.mjs"
+    "server": "node --experimental-modules server/index.mjs",
+    "lint": "eslint .",
+    "validate": "npm ls"
   },
   "dependencies": {
     "babel-loader": "^7.1.2",
@@ -40,12 +42,23 @@
     "socket.io": "^2.0.4",
     "socket.io-client": "^2.0.4",
     "style-loader": "^0.20.1",
-    "webpack": "^3.11.0"
+    "webpack": "^4.17.1"
   },
   "devDependencies": {
-    "webpack-dev-server": "2.11.1"
+    "eslint": "^5.5.0",
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-jsx-a11y": "^6.1.1",
+    "eslint-plugin-react": "^7.11.1",
+    "precommit-hook-eslint": "^3.0.0",
+    "webpack-dev-server": "^3.1.7"
   },
   "engines": {
-    "node": "^9.2.0"
-  }
+    "node": "^10.9.0"
+  },
+  "pre-commit": [
+    "lint",
+    "validate",
+    "test"
+  ]
 }
