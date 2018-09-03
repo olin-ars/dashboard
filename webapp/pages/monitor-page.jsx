@@ -3,7 +3,6 @@ import MapContainer from '../containers/map-container';
 import StatusSidebarContainer from '../containers/status-sidebar-container';
 
 export default class MonitorPage extends React.Component {
-
   render() {
     return (
       <div className="page">
@@ -13,9 +12,8 @@ export default class MonitorPage extends React.Component {
           </div>
           <StatusSidebarContainer />
         </div>
-        {/*Console goes here*/}
+        {/* Console goes here */}
       </div>
-    )
+    );
   }
-
 }

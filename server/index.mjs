@@ -1,13 +1,13 @@
-import DatabaseConnection from './database.mjs';
 import dotenv from 'dotenv';
 import fs from 'fs';
+import DatabaseConnection from './database.mjs';
 import HttpServer from './http-server.mjs';
 import TelemetryDataStore from './telemetry-data-store.mjs';
 import WebSocketServer from './websocket-server.mjs';
 
 // Try loading environment variables from a .env file
 if (fs.existsSync('./.env')) {
-    dotenv.config();
+  dotenv.config();
 }
 
 // Figure out which port we're going to be listening for connections on

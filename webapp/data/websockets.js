@@ -41,12 +41,9 @@ export const ROS_MSG_TYPES = {
   UInt64: 'UInt64',
 };
 
-export const init = ( store ) => {
-
-  Object.keys(ROS_TOPICS).forEach(topic => socket.on(ROS_TOPICS[topic], (payload) =>
-        store.dispatch({ type: ROS_TOPICS[topic], data: payload.data })
-      )
-    );
+export const init = (store) => {
+  Object.keys(ROS_TOPICS).forEach(topic => socket.on(ROS_TOPICS[topic],
+    payload => store.dispatch({ type: ROS_TOPICS[topic], data: payload.data })));
 };
 
-export const emit = ( type, payload ) => socket.emit( type, payload );
+export const emit = (type, payload) => socket.emit(type, payload);

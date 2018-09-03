@@ -1,13 +1,28 @@
+/* eslint-disable react/forbid-prop-types */
 import React from 'react';
-import {Map, Marker, Circle, Polyline, GoogleApiWrapper} from 'google-maps-react';
+import PropTypes from 'prop-types';
+import {
+  Map,
+  Marker,
+  Circle,
+  Polyline,
+  GoogleApiWrapper,
+} from 'google-maps-react';
 
 
 export class MapContainer extends React.Component {
-
   render() {
+    const {
+      waypoints,
+      google,
+      boatCoords,
+      goalCoords,
+      waypointRadius,
+    } = this.props;
+
     const style = {
       width: '100%',
-      height: '100%'
+      height: '100%',
     };
 
     const initialCenter = {
@@ -17,15 +32,18 @@ export class MapContainer extends React.Component {
 
     const waypointMarkers = [];
     const waypointCoords = [];
-    const lines = [];
-    this.props.waypoints.forEach((wp, index) => {
-      const coords = {lat: wp.lat, lng: wp.long};
+    waypoints.forEach((wp, index) => {
+      const coords = {
+        lat: wp.lat,
+        lng: wp.lon,
+      };
+      const key = `${wp.lat}_${wp.lon}`;
       waypointMarkers.push((
         <Circle
-          title={wp.name || `Waypoint ${index+1}`}
-          key={index}
+          title={wp.name || `Waypoint ${index + 1}`}
+          key={key}
           center={coords}
-          radius={this.props.waypointRadius}
+          radius={waypointRadius}
           strokeColor="#0000FF"
           fillColor="#0000FF"
           fillOpacity={0.3}
@@ -41,29 +59,39 @@ export class MapContainer extends React.Component {
         strokeOpacity={0.6}
         strokeWeight={2}
         fillColor="#FF0000"
-        fillOpacity={0.35} />
+        fillOpacity={0.35}
+      />
     ) : null;
 
     return (
       <Map
-        google={this.props.google}
+        google={google}
         zoom={16}
         style={style}
         initialCenter={initialCenter}
       >
         <Marker
           name="Boat!"
-          position={this.props.boatCoords} />
+          position={boatCoords}
+        />
         <Marker
           name="Goal!"
-          position={this.props.goalCoords} />
+          position={goalCoords}
+        />
         {waypointMarkers}
         {pathLines}
       </Map>
-    )
+    );
   }
-
 }
+
+MapContainer.propTypes = {
+  boatCoords: PropTypes.object.isRequired,
+  goalCoords: PropTypes.object.isRequired,
+  google: PropTypes.any.isRequired,
+  waypoints: PropTypes.array.isRequired,
+  waypointRadius: PropTypes.number.isRequired,
+};
 
 export default GoogleApiWrapper({
   apiKey: window.GOOGLE_MAPS_API_KEY,

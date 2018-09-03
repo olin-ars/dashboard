@@ -1,9 +1,9 @@
 import React from 'react';
-import StatText from "./stat-text";
-import numeral from "numeral";
+import PropTypes from 'prop-types';
+import numeral from 'numeral';
+import StatText from './stat-text';
 
 export default class HeadingController extends React.Component {
-
   constructor(props) {
     super(props);
 
@@ -11,31 +11,62 @@ export default class HeadingController extends React.Component {
   }
 
   render() {
-    const kpLabel = <span>K<sub>P</sub></span>;
-    const kiLabel = <span>K<sub>I</sub></span>;
+    const {
+      error,
+      desiredRudderPos,
+      kp,
+      ki,
+      pTermChanged,
+      iTermChanged,
+      targetHeading,
+      targetHeadingChanged,
+    } = this.props;
+
+    const kpLabel = (
+      <span>
+        K
+        <sub>P</sub>
+      </span>
+    );
+    const kiLabel = (
+      <span>
+        K
+        <sub>I</sub>
+      </span>
+    );
     return (
       <div className="heading-controller">
         <div className="half-width">
           <StatText title={kpLabel}>
-            <input type="text" onChange={this.props.pTermChanged} value={this.props.kp}/>
+            <input type="text" onChange={pTermChanged} value={kp} />
           </StatText>
           <StatText title={kiLabel}>
-            <input type="text" onChange={this.props.iTermChanged} value={this.props.ki}/>
+            <input type="text" onChange={iTermChanged} value={ki} />
           </StatText>
           <StatText title="Target Heading">
-            <input type="text" onChange={this.props.targetHeadingChanged} value={this.props.targetHeading}/>
+            <input type="text" onChange={targetHeadingChanged} value={targetHeading} />
           </StatText>
         </div>
         <div className="half-width">
           <StatText title="Accumulated Error">
-            {numeral(this.props.error).format(this.decimalFormat)}
+            {numeral(error).format(this.decimalFormat)}
           </StatText>
           <StatText title="Desired Rudder Position">
-            {numeral(this.props.desiredRudderPos).format(this.decimalFormat)}
+            {numeral(desiredRudderPos).format(this.decimalFormat)}
           </StatText>
         </div>
       </div>
-    )
+    );
   }
-
 }
+
+HeadingController.propTypes = {
+  error: PropTypes.number.isRequired,
+  desiredRudderPos: PropTypes.number.isRequired,
+  kp: PropTypes.number.isRequired,
+  ki: PropTypes.number.isRequired,
+  pTermChanged: PropTypes.func.isRequired,
+  iTermChanged: PropTypes.func.isRequired,
+  targetHeading: PropTypes.number.isRequired,
+  targetHeadingChanged: PropTypes.func.isRequired,
+};

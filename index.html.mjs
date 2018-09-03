@@ -1,4 +1,4 @@
-const GA_ID = null; // TODO Google Analytics
+// const GA_ID = null; // TODO Google Analytics
 const SERVER_URI = `${process.env.SERVER_URI}` || 'ws://127.0.0.1';
 
 export default `

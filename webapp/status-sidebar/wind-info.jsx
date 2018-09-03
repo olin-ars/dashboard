@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import StatText from './stat-text';
 
 export default class WindInfo extends React.Component {
-
   constructor(props) {
     super(props);
 
@@ -13,36 +12,61 @@ export default class WindInfo extends React.Component {
   }
 
   render() {
+    const {
+      windAbs,
+      spoofedWindChanged,
+    } = this.props;
+    const { spoofWind } = this.state;
+
     const checkbox = (
       <label>
-        <input type="checkbox" onChange={e => this.setState({spoofWind: e.currentTarget.checked})} />
+        <input type="checkbox" onChange={e => this.setState({ spoofWind: e.currentTarget.checked })} />
         Spoof wind
       </label>
     );
 
-    return this.state.spoofWind ? (
+    return spoofWind ? (
       <div className="wind-info">
         {checkbox}
         <StatText title="Direction">
-          <input type="text" name="theta" value={this.props.windAbs.direction} onChange={this.props.spoofedWindChanged}/>
+          <input
+            type="text"
+            name="theta"
+            value={windAbs.direction}
+            onChange={spoofedWindChanged}
+          />
         </StatText>
         <StatText title="Speed">
-          <input type="text" name="x" value={this.props.windAbs.speed} onChange={this.props.spoofedWindChanged}/>
+          <input
+            type="text"
+            name="x"
+            value={windAbs.speed}
+            onChange={spoofedWindChanged}
+          />
         </StatText>
       </div>
     ) : (
       <div className="wind-info">
         {checkbox}
-        <StatText title="Direction">{this.props.windAbs.direction}&deg;</StatText>
-        <StatText title="Speed">{this.props.windAbs.speed} knots</StatText>
+        <StatText title="Direction">
+          {windAbs.direction}
+          &deg;
+        </StatText>
+        <StatText title="Speed">
+          {windAbs.speed}
+          &nbsp;
+          knots
+        </StatText>
       </div>
     );
   }
-
 }
 
 WindInfo.propTypes = {
-  windAbs: PropTypes.object.isRequired,
+  windAbs: PropTypes.shape({
+    direction: PropTypes.number.isRequired,
+    speed: PropTypes.number.isRequired,
+  }).isRequired,
   spoofedWindChanged: PropTypes.func,
 };
 

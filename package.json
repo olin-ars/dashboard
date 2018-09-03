@@ -57,8 +57,6 @@
     "node": "^10.9.0"
   },
   "pre-commit": [
-    "lint",
-    "validate",
-    "test"
+    "lint"
   ]
 }

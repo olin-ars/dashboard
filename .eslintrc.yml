@@ -1,8 +1,20 @@
 parser: babel-eslint
 
+env:
+  browser: true
+  node: true
+
 plugins:
   - react
 
 extends:
   - airbnb
+
+rules:
+  jsx-a11y/label-has-associated-control: warn
+  jsx-a11y/label-has-for: warn
+  no-plusplus: off
+  no-minusminus: off
+  prefer-destructuring: off
+  react/prefer-stateless-function: warn
 
