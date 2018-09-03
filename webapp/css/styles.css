@@ -37,6 +37,12 @@ body {
     margin: 3em;
 }
 
+.app-sidebar header .logo {
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
 .sidebar-container {
     overflow: auto;
 }

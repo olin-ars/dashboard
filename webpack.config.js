@@ -13,20 +13,20 @@ module.exports = {
     filename: 'bundle.js',
   },
   module: {
-    loaders: [
+    rules: [
       {
         test: /\.jsx?/,
         include: APP_DIR,
-        loader: 'babel-loader',
+        use: 'babel-loader',
       },
       {
         test: /\.svg$/,
-        loaders: 'raw-loader',
+        use: 'raw-loader',
       },
       {
         test: /\.css$/,
         include: APP_DIR,
-        loaders: ['style-loader', 'css-loader'],
+        use: ['style-loader', 'css-loader'],
       },
     ],
   },

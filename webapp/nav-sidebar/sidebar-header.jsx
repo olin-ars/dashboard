@@ -1,14 +1,21 @@
-import * as React from "react";
+import * as React from 'react';
 import SVGInline from 'react-svg-inline';
-import OARSLogo from '../svg/OARS-logo.svg';
 import PropTypes from 'prop-types';
+import OARSLogo from '../svg/OARS-logo.svg';
 
 export default class SidebarHeader extends React.Component {
   render() {
     const { homeClicked } = this.props;
     return (
       <header className="header-content">
-        <button onClick={homeClicked} title="Home"><SVGInline svg={OARSLogo} className="logo" /></button>
+        <button
+          className="logo"
+          onClick={homeClicked}
+          title="Home"
+          type="button"
+        >
+          <SVGInline svg={OARSLogo} className="logo" />
+        </button>
       </header>
     );
   }

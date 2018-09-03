@@ -2,7 +2,9 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 // import { toggleSidebarCollapsed } from './data/actions';
-// import styles from './css/styles.css';
+// Import the CSS for bundling (this actually does do something)
+// eslint-disable-next-line no-unused-vars
+import styles from './css/styles.css';
 import setupStore from './data/setup-store';
 // import BoatOverviewContainer from './containers/status-sidebar-container';
 import Sidebar from './nav-sidebar/sidebar';
