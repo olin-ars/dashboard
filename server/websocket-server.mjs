@@ -31,7 +31,7 @@ export default class WebSocketServer {
     console.log('Observer connected');
     socket.on('publishROSMessage', data => this.onPublishROSMessageMessage(data));
     socket.on('startStopRosbag', command => this.onStartStopRosbag(command));
-    socket.on('disconnect', () => this.onDisconnect(socket));
+    // socket.on('disconnect', () => this.onDisconnect(socket));
   }
 
   // eslint-disable-next-line no-unused-vars
