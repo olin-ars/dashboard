@@ -24,7 +24,7 @@ export default class WebSocketServer {
   onReporterConnection(socket) {
     console.log('Reporter connected');
     socket.on('message', data => this.onReporterMsgReceive(socket, data));
-    socket.on('disconnect', () => this.onDisconnect(socket));
+    // socket.on('disconnect', () => this.onDisconnect(socket));
   }
 
   onObserverConnection(socket) {
