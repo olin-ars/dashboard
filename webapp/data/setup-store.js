@@ -58,6 +58,9 @@ export default function () {
       waypoints: [],
       waypointRadius: 10, // meters
     },
+    sidebar: {
+      isCollapsed: false,
+    },
   };
 
   const middleware = [

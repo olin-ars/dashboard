@@ -11,6 +11,7 @@ body,
 .app {
     height: 100%;
     width: 100%;
+    overflow: hidden;
 }
 
 body {
@@ -27,14 +28,14 @@ body {
 .app-sidebar {
     display: flex;
     flex-direction: column;
-    background-color: #009BDF;
     max-width: 20em;
     height: 100%;
-    /*border-right: 3px solid #ddd;*/
+    overflow: auto;
 }
 
 .app-sidebar header {
-    margin: 3em;
+    padding: 3em;
+    background-color: #009BDF;
 }
 
 .app-sidebar header .logo {
@@ -50,6 +51,7 @@ body {
 .sidebar {
     display: flex;
     flex-direction: column;
+    border-right: 1px solid #dedede;
 }
 
 .page {
@@ -66,7 +68,6 @@ body {
 .map-status-container {
     display: flex;
     flex-direction: row;
-    justify-content: flex-end; /* Temporary -- remove once map implemented */
     flex: 1;
 }
 
@@ -81,16 +82,14 @@ body {
 
 .sidebar.status {
     max-width: 25em;
-    background-color: #f8f8f8;
-    border-left: 1px solid #dedede;
     flex-grow: 1;
 }
 
 .status-sidebar-item-wrapper {
     overflow: auto;
-    /*flex: 1;*/
     display: flex;
     flex-direction: column;
+    background-color: #f8f8f8;
 }
 
 .status-sidebar-item-wrapper * {
@@ -106,6 +105,10 @@ body {
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
+}
+
+.status-sidebar-item-wrapper > div {
+    padding: 0.5em;
 }
 
 .stat-text {
@@ -159,7 +162,6 @@ span.SVGInline.boat {
 
 .compass-rose svg {
     height: 5em;
-    /*! width: auto; */
 }
 
 .stat-summary .stat {

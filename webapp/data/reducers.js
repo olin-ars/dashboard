@@ -121,3 +121,10 @@ export function planning(state = {}, action) {
       return state;
   }
 }
+
+export function sidebar(state = {}, action) {
+  switch (action.type) {
+    default:
+      return state;
+  }
+}
