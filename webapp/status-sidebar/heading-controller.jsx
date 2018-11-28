@@ -20,6 +20,7 @@ export default class HeadingController extends React.Component {
       iTermChanged,
       targetHeading,
       targetHeadingChanged,
+      setWindFilterWindowSize,
     } = this.props;
 
     const kpLabel = (
@@ -54,6 +55,9 @@ export default class HeadingController extends React.Component {
           <StatText title="Desired Rudder Position">
             {numeral(desiredRudderPos).format(this.decimalFormat)}
           </StatText>
+          <StatText title="Wind Filter Window Size">
+            <input type="text" onChange={setWindFilterWindowSize} />
+          </StatText>
         </div>
       </div>
     );
@@ -69,4 +73,5 @@ HeadingController.propTypes = {
   iTermChanged: PropTypes.func.isRequired,
   targetHeading: PropTypes.number.isRequired,
   targetHeadingChanged: PropTypes.func.isRequired,
+  setWindFilterWindowSize: PropTypes.func.isRequired,
 };

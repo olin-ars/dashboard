@@ -13,6 +13,7 @@ import {
   setWaypointReachedRadius,
   setSpoofedWind,
   setSpoofedPosition,
+  setWindFilterWindowSize,
 } from '../data/actions';
 
 // This function passes values/objects from the Redux state to the React component as props
@@ -63,6 +64,9 @@ const mapDispatchToProps = dispatch => ({
   },
   spoofedPositionChanged: (e) => {
     dispatch(setSpoofedPosition(e.currentTarget.name, e.currentTarget.value));
+  },
+  setWindFilterWindowSize: (e) => {
+    dispatch(setWindFilterWindowSize(e.target.value));
   },
 });
 

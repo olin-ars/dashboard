@@ -22,6 +22,7 @@ export const ROS_TOPICS = {
   RUDDER_POSITION: '/rudder_pos',
   WAYPOINTS: '/planning/waypoints',
   WAYPOINT_RADIUS: '/planning/waypoint_radius',
+  WIND_FILTER_WINDOW_SIZE: '/control/airmar_filter/deque_size',
   WIND_RELATIVE: '/weather/wind/rel',
   WIND_TRUE: '/weather/wind/true',
 };

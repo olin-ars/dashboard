@@ -203,6 +203,15 @@ export function setSpoofedPosition(name, value) {
   };
 }
 
+export function setWindFilterWindowSize(value) {
+  return (dispatch, getStore, { emit }) => {
+    emit(
+      WS_EVENT_TYPES.PUBLISH_ROS_MESSAGE,
+      buildROSMessage(ROS_TOPICS.WIND_FILTER_WINDOW_SIZE, ROS_MSG_TYPES.UInt8, value),
+    );
+  };
+}
+
 // ########## End Navigation Actions ########## //
 
 // ########## Begin Control Parameter Tweaking ############ //

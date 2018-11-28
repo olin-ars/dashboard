@@ -1,3 +1,4 @@
+/* eslint-disable no-alert,no-console */
 // This file contains a bunch of Redux reducers
 
 import { ActionTypes } from './actions';
